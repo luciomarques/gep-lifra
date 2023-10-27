@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>agenda</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-datetime locale="pt-BR"
+  presentation="date"
+  [multiple]="true"
+  [value]="['2022-08-23', '2022-08-25']"
+></ion-datetime>
+  <!-- <ion-calendar [(ngModel)]="dateMulti"
+        [options]="optionsMulti"
+        [type]="type"
+        [format]="'DD-MM-YYYY'"
+        (change)="onEventSelected($event)">
+    </ion-calendar> -->
+
+</ion-content>

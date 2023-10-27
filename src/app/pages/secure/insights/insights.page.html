@@ -1,0 +1,120 @@
+<ion-header  collapse="fade" [translucent]="true">
+  <ion-toolbar >
+    <ion-title>
+      Alocação
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Investors</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div class="ion-padding">
+
+    <ion-card class="ion-card-chart ion-no-margin animate__animated animate__fadeIn">
+
+      <!-- Skeletons -->
+      <ng-container *ngIf="!content_loaded">
+        <ion-card-header>
+          <div>
+            <ion-card-title>
+              <ion-skeleton-text animated style="width: 60px"></ion-skeleton-text>
+            </ion-card-title>
+            <ion-card-subtitle>
+              <ion-skeleton-text animated style="width: 80px"></ion-skeleton-text>
+            </ion-card-subtitle>
+          </div>
+          <ion-badge color="primary" mode="ios">
+            <ion-skeleton-text animated style="width: 50px"></ion-skeleton-text>
+          </ion-badge>
+        </ion-card-header>
+
+        <ion-skeleton-text animated style="width: calc(100% - 40px); margin: 16px auto 16px auto; min-height: 140px;">
+        </ion-skeleton-text>
+      </ng-container>
+
+      <!-- Chart -->
+   <!---   <ng-container *ngIf="content_loaded" >
+        <ion-card-header>
+          <div>
+            <ion-card-title>{{total | currency}}</ion-card-title>
+            <ion-card-subtitle>Investments Alocation on year</ion-card-subtitle>
+          </div>
+          <ion-badge color="primary" mode="ios">
+            <ion-icon name="caret-up"></ion-icon>0.0%
+          </ion-badge>
+        </ion-card-header>-->
+
+        <!-- <canvas baseChart [data]="bar_chart_data" [options]="bar_chart_option" [type]="bar_chart_type"
+          class="ion-padding">
+        </canvas> -->
+        
+    <!--    <canvas #gBarra id="gBarra">
+        </canvas>
+      
+      </ng-container>-->
+
+    </ion-card>
+
+  <!--  <hr class="hr-medium">-->
+
+    <ion-list-header>
+      <ion-label color="white">Today Updated Investments</ion-label>
+    <!--  <ion-note color="tertiary" class="ion-note-small">$ 0.00</ion-note>-->
+    </ion-list-header>
+
+
+    <!-- Skeletons -->
+    <ion-list class="list-custom animate__animated animate__fadeIn" lines="full" *ngIf="!content_loaded">
+      <ion-item button detail="false" *ngFor="let i of [].constructor(4);">
+        <ion-avatar slot="start" class="ion-avatar-default-icon">
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </ion-avatar>
+        <ion-label>
+          <h3>
+            <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+          </h3>
+          <p class="font-size-smallest">
+            <ion-skeleton-text animated style="width: 20%"></ion-skeleton-text>
+          </p>
+        </ion-label>
+        <ion-skeleton-text slot="end" animated style="width: 10%"></ion-skeleton-text>
+      </ion-item>
+    </ion-list>
+
+    <ion-list class="list-custom animate__animated animate__fadeIn" lines="full" *ngIf="content_loaded">
+   
+
+      
+      <ion-item button detail="false" (click)="detalhes(i)" *ngFor="let i of dados" [hidden]="i.MOEDA_C!=='R$'">         
+  
+        <ion-avatar *ngIf="i.MOEDA_C==='R$'" slot="start"  class="ion-avatar-default-icon">
+             <ion-img src="{{i.LOGO}}"></ion-img>
+        </ion-avatar>
+        <ion-label *ngIf="i.MOEDA_C==='R$'">
+          <h3 [innerHtml]="i.DESCR"></h3>
+          <p>{{i.IDTIPOINV_C}}</p>
+        </ion-label>
+      <!--- <ion-badge *ngIf="i.MOEDA_C==='R$'" color="danger" mode="ios" slot="end">{{i.VALOR_NEGOCIACAO|currency:'BRL':true:'1.2-2'}}</ion-badge>-->
+    <!--   <ion-badge *ngIf="i.MOEDA_C==='R$'" color="{{i.VALOR_NEGOCIACAO<0?'danger':'success'}}" mode="ios" slot="end">{{i.VALOR_NEGOCIACAO|currency:'BRL':true:'1.2-2'}}</ion-badge>
+    -->   <div *ngIf="i.MOEDA_C==='R$'">
+          <div *ngIf="i.MOEDA_C==='R$'"  class="{{i.VALOR_NEGOCIACAO<0?'perigo':'sucesso'}}" mode="ios" slot="end">
+            {{i.VALOR_NEGOCIACAO|currency:'USD':true:'1.2-2'}}
+          </div>
+ 
+          <div *ngIf="i.MOEDA_C==='R$'"  class="{{i.PERC_MES<0?'perigo':'sucesso'}}" mode="ios" slot="end">
+            {{i.PERC_MES|currency:' ':true:'1.2-2'}}%
+          </div>
+        </div>     
+      </ion-item>
+
+    </ion-list>
+
+  </div>
+
+</ion-content>

@@ -1,0 +1,84 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="back" defaultHref="/payments"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      analítico
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div class="ion-padding">
+
+    <ion-list-header class="ion-list-header-small">
+      <ion-label>Informação</ion-label>
+      <div *ngIf="id=='0' || id==item.IDCONTA">
+        <ion-button fill="clear" slot="start" (click)="start(item)" *ngIf="id=='0'">
+          <ion-icon name="play-circle-outline" color="success"></ion-icon>
+        </ion-button>
+        <ion-button fill="clear" slot="end" (click)="stop(item)" *ngIf="id==item.IDCONTA">
+          <ion-icon name="stop-circle-outline" color="danger"></ion-icon>
+        </ion-button>
+      </div>
+    </ion-list-header>
+
+    <ion-list class="list-custom" lines="full">
+      <ion-item>
+        <ion-label>
+          <p>Total</p>
+        </ion-label>
+        <ion-badge color="{{total_brasil<0?'danger':'success'}}" mode="ios" slot="end">{{total_brasil|currency:'USD':true:'1.2-2'}}</ion-badge>
+      </ion-item>
+      <ion-item>
+        <ion-label>
+          <p>Nome da Conta</p>
+        </ion-label>
+        <ion-input readonly slot="end" class="font-size-small ion-text-right ion-no-padding-end" value="{{item.DESCR}}"></ion-input>
+      </ion-item>
+   <!--   <ion-item>
+        <ion-label>
+          <p>Date</p>
+        </ion-label>
+        <ion-input readonly slot="end" class="font-size-small ion-text-right ion-no-padding-end" value="01 June, 2022 / 09:21"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>
+          <p>Merchant</p>
+        </ion-label>
+        <ion-input readonly slot="end" class="font-size-small ion-text-right ion-no-padding-end" value="Starbucks New York"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>
+          <p>Transaction-ID</p>
+        </ion-label>
+        <ion-input readonly slot="end" class="font-size-small ion-text-right ion-no-padding-end" value="848-14E-11V"></ion-input>
+      </ion-item>-->
+    </ion-list>
+
+    <hr class="hr-medium">
+
+    <ion-list-header class="ion-list-header-small">
+      <ion-label>Detalhe</ion-label>
+      <ion-note color="tertiary" class="ion-note-small">{{total_brasil|currency}}</ion-note>
+    </ion-list-header>
+    <ion-list class="list-custom animate__animated animate__fadeIn" lines="full">
+      <ion-item button detail="false" *ngFor="let i of dados" [hidden]="i.MOEDA_C!=='R$'">         
+
+        <ion-avatar *ngIf="i.MOEDA_C==='R$'" slot="start"    class="ion-avatar-default-icon">
+             <ion-img src="https://acesso.naufinance.com/nau/Content/Images/nau/imgacaoup.png"></ion-img>
+        </ion-avatar>
+        <ion-label *ngIf="i.MOEDA_C==='R$'" class="item-text-wrap text-wrap" text-wrap>
+          <h3 [innerHtml]="i.DESCR"></h3>
+          <p class="item-text-wrap text-wrap" text-wrap>{{i.HISTORICO}}</p>
+        </ion-label>
+        <ion-badge *ngIf="i.MOEDA_C==='R$'" color="{{i.VALOR<0?'danger':'success'}}" mode="ios" slot="end">{{i.VALOR|currency:'USD':true:'1.2-2'}}</ion-badge>
+  
+      </ion-item>
+    </ion-list>
+
+  </div>
+
+</ion-content>

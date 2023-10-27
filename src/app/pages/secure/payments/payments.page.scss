@@ -1,0 +1,17 @@
+app-payments{
+    .sucesso{
+        color: var(--ion-color-success) !important;
+        background: rgba(var(--ion-color-success-rgb), 0.1) !important;
+        font-size: 0.74em !important;
+        line-height: 200%;
+        text-align:right !important;
+    }
+
+    .perigo{
+        color: var(--ion-color-danger) !important;
+        background: rgba(var(--ion-color-danger-rgb), 0.1) !important;
+        font-size: 0.74em !important;
+        line-height: 200%;
+        text-align:right !important;
+    }
+}

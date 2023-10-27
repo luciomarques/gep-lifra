@@ -1,0 +1,22 @@
+app-devices {
+
+    ion-content {
+        ion-item {
+            div {
+                margin-right: 10px;
+
+                img {
+                    width: 35px !important;
+                    height: auto !important;
+                    border-radius: 50%;
+                    background: #FFFFFF;
+                }
+            }
+        }
+    }
+}
+
+.alert-input.sc-ion-alert-ios{
+        background:#FFFFFF !important;
+        color:#000000 !important;
+}

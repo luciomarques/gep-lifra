@@ -1,0 +1,36 @@
+<ion-header collapse="fade" [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="voltar" defaultHref="/Dashboard"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      Mensagens
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Mensagens</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div class="container">
+    <ion-list>
+      <ion-item   *ngFor="let i of mensagens" lines="none">
+        <div class="mensagem">
+          <!-- <div class="icone"> -->
+            <img [src]="i.IMAGEM" />
+          <!-- </div> -->
+          <div class="texto">
+            <h4>{{i.TITULO}}</h4>
+            <p>{{i.MENSAGEM}}</p>
+            <p>{{i.DATA}}</p>
+          </div>
+        </div>
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-content>

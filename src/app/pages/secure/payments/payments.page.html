@@ -1,0 +1,164 @@
+<ion-header collapse="fade" [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Contas
+    </ion-title>
+    <ion-buttons slot="primary">
+      <!-- <ion-button (click)="filter()">
+        <ion-icon slot="icon-only" name="filter"></ion-icon>
+      </ion-button>-->
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Robot In Process</ion-title>
+    </ion-toolbar>
+    <!-- <ion-toolbar>
+      <ion-searchbar showCancelButton="focus" placeholder="Company, category, expense ..."></ion-searchbar>
+    </ion-toolbar>-->
+  </ion-header>
+
+  <div class="ion-padding">
+
+    <!-- Skeletons -->
+    <ng-container *ngIf="!content_loaded">
+
+      <ion-list-header class="ion-list-header-small">
+        <ion-label>
+          <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+        </ion-label>
+        <ion-note color="tertiary" class="ion-note-small">
+          <ion-skeleton-text animated style="width: 40px"></ion-skeleton-text>
+        </ion-note>
+      </ion-list-header>
+      <ion-list class="list-custom animate__animated animate__fadeIn" lines="full">
+        <ion-item button detail="false" *ngFor="let i of [].constructor(12);" (click)="detalhes(i)">
+          <ion-avatar slot="start" class="ion-avatar-default-icon">
+            <ion-skeleton-text animated></ion-skeleton-text>
+          </ion-avatar>
+          <ion-label>
+            <h3>
+              <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+            </h3>
+            <p>
+              <ion-skeleton-text animated style="width: 75%"></ion-skeleton-text>
+            </p>
+          </ion-label>
+          <ion-skeleton-text slot="end" animated style="width: 15%"></ion-skeleton-text>
+        </ion-item>
+      </ion-list>
+
+    </ng-container>
+
+    <ng-container *ngIf="content_loaded">
+
+      <ion-list-header class="ion-list-header-small">
+        <ion-label>Investments Operation</ion-label>
+        <ion-note color="tertiary" class="ion-note-small">{{total_brasil|currency}}</ion-note>
+      </ion-list-header>
+      <ion-list class="list-custom animate__animated animate__fadeIn" lines="full">
+        <ion-item detail="false" *ngFor="let i of dados" [hidden]="i.MOEDA_C!=='R$'">
+
+          <ion-avatar *ngIf="i.MOEDA_C==='R$'" slot="start" class="ion-avatar-default-icon" (click)="detalhes(i)">
+            <ion-img src="{{i.LOGO}}"></ion-img>
+          </ion-avatar>
+          <ion-label *ngIf="i.MOEDA_C==='R$'">
+            <h3 [innerHtml]="i.DESCR" (click)="detalhes(i)"></h3>
+            <p (click)="detalhes(i)">{{i.IDTIPOINV_C}}</p>
+            <div *ngIf="(id=='0' || id==i.IDCONTA) && i.IDCONTA!=='5007'">
+              <p style="font-weight:bolder;color:#1261A6;" *ngIf="id==i.IDCONTA && stReal==0 && i.IDCONTA!=='5007'">starting...</p>
+              <p style="font-weight:bolder;color:#1261A6;" *ngIf="id=='0' && stReal==1 && gs.itemIniciado==i.IDCONTA && i.IDCONTA!=='5007'">stopping...</p>
+              <p style="font-weight:bolder;color:#1261A6;" *ngIf="id==i.IDCONTA && stReal==1 && i.IDCONTA!=='5007'">processing...</p>
+              
+              <ion-button fill="clear" slot="start" (click)="start(i)" *ngIf="(id=='0' && stReal==0) || i.IDCONTA=='5007'">
+                <ion-icon name="play-circle-outline" color="success"></ion-icon>
+              </ion-button>
+              <ion-button fill="clear" slot="end" (click)="stop(i)" *ngIf="id==i.IDCONTA && stReal==1 && i.IDCONTA!=='5007'">
+                <ion-icon name="stop-circle-outline" color="danger"></ion-icon>
+              </ion-button>
+            </div>
+            <div *ngIf="i.IDCONTA=='5007'" style="display:flex;justify-content: space-between;margin-right:10px;margin-left:10px;">
+              <ion-button fill="outline" slot="start" (click)="buy(i)">
+                buy
+              </ion-button>
+              <ion-button fill="outline" color="danger" slot="end" (click)="sell(i)">
+                sell
+              </ion-button>
+            </div>
+          </ion-label>
+
+          <ion-badge (click)="detalhes(i)" *ngIf="i.MOEDA_C==='R$'" color="{{i.VALOR_NEGOCIACAO<0?'danger':'success'}}"
+            mode="ios" slot="end">{{i.VALOR_NEGOCIACAO|currency:'USD':true:'1.2-2'}}</ion-badge>
+
+        </ion-item>
+        <!-- <ion-item button detail="false" routerLink="detail">
+          <ion-avatar slot="start" class="ion-avatar-default-icon">
+            <ion-icon name="business"></ion-icon>
+          </ion-avatar>
+          <ion-label>
+            <h3>Salary</h3>
+            <p>Apple Inc.</p>
+          </ion-label>
+          <ion-badge color="medium" mode="ios" slot="end">$8412.48</ion-badge>
+        </ion-item>
+        <ion-item button detail="false" routerLink="detail">
+          <ion-avatar slot="start" class="ion-avatar-default-icon">
+            <ion-icon name="home"></ion-icon>
+          </ion-avatar>
+          <ion-label>
+            <h3>Rent</h3>
+            <p>Housing Inc.</p>
+          </ion-label>
+          <ion-badge color="danger" mode="ios" slot="end">- $1400.00</ion-badge>
+        </ion-item> -->
+      </ion-list>
+
+      <!--    <hr class="hr-medium">
+  
+      <ion-list-header class="ion-list-header-small">
+        <ion-label>United State Investments</ion-label>
+        <ion-note color="tertiary" class="ion-note-small">{{total_eua|currency}}</ion-note>
+      </ion-list-header>
+      <ion-list class="list-custom animate__animated animate__fadeIn" lines="full">
+        <ion-item  button detail="false" routerLink="detail" *ngFor="let i of dados" [hidden]="i.MOEDA_C!=='USD'"> 
+          <ng-container *ngIf="i.MOEDA_C==='USD'"> 
+       
+          <ion-avatar *ngIf="i.MOEDA_C==='USD'" slot="start"    class="ion-avatar-default-icon">
+               <ion-img src="{{i.LOGO}}"></ion-img>
+          </ion-avatar>
+          <ion-label *ngIf="i.MOEDA_C==='USD'">
+            <h3 [innerHtml]="i.DESCR"></h3>
+            <p>{{i.IDTIPOINV_C}}</p>
+          </ion-label>
+          <ion-badge *ngIf="i.MOEDA_C==='USD'" color="{{i.VALOR_NEGOCIACAO<0?'danger':'success'}}" mode="ios" slot="end">{{i.VALOR_NEGOCIACAO|currency:'USD':true:'1.2-2'}}</ion-badge>
+        </ng-container>
+        </ion-item>
+      </ion-list>-->
+
+      <hr class="hr-medium">
+
+      <!--  <ion-list-header class="ion-list-header-small">
+        <ion-label>April, 2022</ion-label>
+        <ion-note color="tertiary" class="ion-note-small">$8412,48</ion-note>
+      </ion-list-header>
+      <ion-list class="list-custom animate__animated animate__fadeIn" lines="full">
+        <ion-item button detail="false" routerLink="detail">
+          <ion-avatar slot="start" class="ion-avatar-default-icon">
+            <ion-icon name="business"></ion-icon>
+          </ion-avatar>
+          <ion-label>
+            <h3>Salary</h3>
+            <p>Apple Inc.</p>
+          </ion-label>
+          <ion-badge color="medium" mode="ios" slot="end">$8412.48</ion-badge>
+        </ion-item>
+      </ion-list>-->
+
+    </ng-container>
+
+  </div>
+
+</ion-content>

@@ -1,0 +1,116 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="back" defaultHref="/insights"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      Detalhe
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div class="ion-padding">
+
+    <ion-list-header class="ion-list-header-small">
+      <ion-label>Informação</ion-label>
+    </ion-list-header>
+
+    <ion-list class="list-custom" lines="full">
+      <ion-item>
+        <ion-label>
+          <p>Valor Total</p>
+        </ion-label>
+        <ion-badge color="success" mode="ios" slot="end">{{item.VALOR_NEGOCIACAO|currency:'BRL':true:'1.2-2'}}</ion-badge>
+      </ion-item>
+      <ion-item>
+        <ion-label>
+          <p>Nome do Investimento</p>
+        </ion-label>
+        <ion-input readonly slot="end" class="font-size-small ion-text-right ion-no-padding-end" value="{{item.DESCR}}"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>
+          <p>Rentabilidade Mensal</p>
+        </ion-label>
+        <ion-input readonly slot="end" class="font-size-small ion-text-right ion-no-padding-end" value="{{item.PERC_MES}}"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>
+          <p>Rentabilidade Anual</p>
+        </ion-label>
+        <ion-input readonly slot="end" class="font-size-small ion-text-right ion-no-padding-end" value="{{item.PERC_ANO}}"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>
+          <p>TIR Taxa Interna de retorno</p>
+        </ion-label>
+        <ion-input readonly slot="end" class="font-size-small ion-text-right ion-no-padding-end" value="{{item.PERC_PROJECAO}}"></ion-input>
+      </ion-item>
+    </ion-list>
+
+    <hr class="hr-medium">
+
+    <!-- <ion-list-header class="ion-list-header-small">
+      <ion-label>Actions</ion-label>
+    </ion-list-header> -->
+
+    <!-- <ion-list class="list-custom" lines="full">
+      <ion-item detail="false">
+        <ion-avatar slot="start" class="ion-avatar-default-icon">
+          <ion-icon color="primary" name="receipt"></ion-icon>
+        </ion-avatar>
+        <ion-label>
+          <h3>Receipt</h3>
+          <p class="font-size-smallest">View digital invoice</p>
+        </ion-label>
+        <ion-button slot="end">
+          View
+        </ion-button>
+      </ion-item>
+      <ion-item button>
+        <ion-avatar slot="start" class="ion-avatar-default-icon">
+          <ion-icon color="primary" name="chatbox"></ion-icon>
+        </ion-avatar>
+        <ion-label>
+          <h3>Contact merchant</h3>
+          <p class="font-size-smallest">Get in touch with merchant</p>
+        </ion-label>
+      </ion-item>
+    </ion-list> -->
+
+    <ion-list-header class="ion-list-header-small">
+      <ion-label>Detalhe de Investimento</ion-label>
+    <!-- <ion-note color="tertiary" class="ion-note-small">{{item.VALOR_NEGOCIACAO|currency:'BRL':true:'1.2-2'}}</ion-note>
+    --> </ion-list-header>
+    <ion-list class="list-custom animate__animated animate__fadeIn" lines="full">
+      <ion-item button detail="false" *ngFor="let i of dados" [hidden]="i.MOEDA_C!=='R$'">         
+
+        <ion-avatar *ngIf="i.MOEDA_C==='R$'" slot="start"    class="ion-avatar-default-icon">
+             <ion-img src="{{i.LOGO}}"></ion-img>
+        </ion-avatar>
+        <ion-label *ngIf="i.MOEDA_C==='R$'">
+          <h3 [innerHtml]="i.DESCR"></h3>
+          <p>{{i.IDTIPOINV_C}}</p>
+        </ion-label>
+       <!-- <ion-badge *ngIf="i.MOEDA_C==='R$'" color="success" mode="ios" slot="end">{{i.VALOR_NEGOCIACAO|currency:'BRL':true:'1.2-2'}}</ion-badge>
+       -->
+
+       <ion-label *ngIf="i.MOEDA_C==='R$'">
+        <ion-badge *ngIf="i.MOEDA_C==='R$'" color="{{i.VALOR_NEGOCIACAO<0?'danger':'success'}}" mode="ios" slot="end">{{i.VALOR_NEGOCIACAO|currency:'BRL':true:'1.2-2'}}</ion-badge>
+        <p><ion-badge *ngIf="i.MOEDA_C==='R$'" color="{{i.PERC_MES<0?'danger':'success'}}" mode="ios" slot="end">{{i.PERC_MES|currency:' ':true:'1.2-2'}}%</ion-badge></p>
+      </ion-label>
+
+
+
+      </ion-item>
+    </ion-list>
+
+  </div>
+
+</ion-content>
+
+
+
+

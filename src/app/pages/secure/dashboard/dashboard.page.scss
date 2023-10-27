@@ -1,0 +1,101 @@
+app-dashboard {
+    //ion-header {}
+
+
+    .container {
+
+        .img-circle {
+            width: 20px !important;
+            border-radius: 50%;
+            margin-top:5px;
+            margin-bottom:5px;
+        }
+
+        .col-sm-6 {
+            font-size: 10px !important;
+
+
+        }
+
+
+        .table {
+            font-size: 11px !important;
+            width: 100%;
+            margin-top:14px;
+            thead{
+                font-size:0.8em;
+                color:#CECECE;
+            }
+        }
+
+        ion-list {
+            margin: 10px !important;
+            background: transparent !important;
+        }
+
+        ion-list,
+        ion-item {
+            background: transparent !important;
+        }
+
+      
+        ion-item {
+            // background: #000000 !important;
+            background: var(--ion-card-background, var(--ion-item-background, var(--ion-background-color, #fff))) !important;
+            font-size: 0.8rem;
+
+            div {
+                // background: #000000 !important;
+                background: var(--ion-card-background, var(--ion-item-background, var(--ion-background-color, #fff))) !important;
+                font-size: 0.8rem;
+                color:black;
+                width: 100%;
+            }
+            h1{
+                font-size:1.1rem;
+            }
+            h2{
+                font-size:1.0rem;
+            }
+            h3{
+                font-size:0.9rem;
+            }
+            h4{
+                font-size:0.8rem;
+            }
+            h5{
+                font-size:0.7rem;
+            }
+            h6{
+                font-size:0.6rem;
+            }
+            table{
+                text-align:left;
+                tr{
+                    td:nth-child(2){
+                        font-size:0.8em;
+                        width:20%;
+                    }
+                }
+            }
+        }
+
+        ion-item {
+            //:nth-child(n+3){
+            // --background: #000000 !important;
+            --background: var(--ion-card-background, var(--ion-item-background, var(--ion-background-color, #fff))) !important;
+            color: #ffffff;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            border-radius: 15px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+
+        ion-card {
+            --margin-start: 20px !important;
+            --margin-end: 20px;
+      
+        }
+    }
+}

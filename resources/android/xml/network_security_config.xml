@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="true">localhost</domain>
+        <domain includeSubdomains="true">naufinance.com</domain>
+        <domain includeSubdomains="true">gepbusiness.com</domain>
+        <domain includeSubdomains="true">*</domain>
+        <domain includeSubdomains="true">34.95.148.7</domain>
+    </domain-config>
+</network-security-config>

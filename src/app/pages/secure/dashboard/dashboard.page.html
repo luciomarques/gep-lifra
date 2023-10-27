@@ -1,0 +1,149 @@
+<!--<ion-header>
+  <ion-toolbar>
+    <ion-title>Dashboard</ion-title>
+    <ion-button fill="clear" slot="end" (click)="mudaVideo()">
+    <ion-icon name="help" ></ion-icon>
+  </ion-button>
+  </ion-toolbar>
+</ion-header>-->
+
+
+
+<ion-header collapse="fade" [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Dashboard
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Dashboard</ion-title>
+  <!--    <ion-button fill="clear" slot="end" [routerLink]="['/mensagens']">
+        <ion-icon name="mail-outline">
+
+        </ion-icon>
+        <ion-badge *ngIf="mensagens.length>0" slot="end" style="font-size:0.6em;">{{mensagens.length}}</ion-badge>
+      </ion-button>-->
+
+  <!--    <ion-button fill="clear" slot="end" [routerLink]="['/calendario']">
+        <ion-icon name="calendar"></ion-icon>
+      </ion-button>-->
+
+  <!--    <ion-button fill="clear" slot="end" (click)="mudaVideo()">
+        <ion-icon name="help"></ion-icon>
+      </ion-button>-->
+
+    </ion-toolbar>
+  </ion-header>
+
+  <div class="container">
+
+   <!-- <video controls="controls" width="100%" height="350px" id="videoNau" [hidden]="!video">
+      <source src="https://www.gepbusiness.com/nau/content/videos/videonau.mp4">
+    </video>-->
+
+    <ion-card class="ion-card-chart animate__animated animate__fadeIn">
+      <!-- Skeletons -->
+      <ng-container *ngIf="!content_loaded">
+        <ion-card-header>
+          <div>
+            <ion-card-title>
+              <ion-skeleton-text animated style="width: 60px"></ion-skeleton-text>
+            </ion-card-title>
+            <ion-card-subtitle>
+              <ion-skeleton-text animated style="width: 80px"></ion-skeleton-text>
+            </ion-card-subtitle>
+          </div>
+          <ion-badge color="primary" mode="ios">
+            <ion-skeleton-text animated style="width: 50px"></ion-skeleton-text>
+          </ion-badge>
+        </ion-card-header>
+
+        <ion-skeleton-text animated style="width: calc(100% - 40px); margin: 16px auto 16px auto; min-height: 140px;">
+        </ion-skeleton-text>
+      </ng-container>
+
+      <!-- Chart -->
+      <ng-container *ngIf="content_loaded">
+        <ion-card-header>
+          <div>
+            <p><b style="color:black">Profitability</b></p>
+            <ion-card-title>{{total|currency}}</ion-card-title>
+            <!--   <ion-card-subtitle>Posição Investimentos no ano</ion-card-subtitle>-->
+          </div>
+
+
+
+        <!--  <div>
+
+            <ion-card-title>{{total|currency}}</ion-card-title>
+            <ion-card-subtitle>Posição Investimentos no ano</ion-card-subtitle>
+          </div>-->
+          <ion-badge color="primary" mode="ios">
+            <ion-icon name="caret-up"></ion-icon>0.00%
+          </ion-badge>
+        </ion-card-header>
+
+        <!-- <canvas baseChart #gBarra [data]="bar_chart_data" [options]="bar_chart_option" [type]="bar_chart_type"
+          class="ion-padding">
+        </canvas> -->
+        <canvas baseChart #gBarra class="ion-padding">
+        </canvas>
+      </ng-container>
+    </ion-card>
+
+    <ion-card class="ion-card-chart animate__animated animate__fadeIn">
+      <!-- Skeletons -->
+      <ng-container *ngIf="!content_loaded">
+        <ion-card-header>
+          <div>
+            <ion-card-title>
+              <ion-skeleton-text animated style="width: 60px"></ion-skeleton-text>
+            </ion-card-title>
+            <ion-card-subtitle>
+              <ion-skeleton-text animated style="width: 80px"></ion-skeleton-text>
+            </ion-card-subtitle>
+          </div>
+          <ion-badge color="primary" mode="ios">
+            <ion-skeleton-text animated style="width: 50px"></ion-skeleton-text>
+          </ion-badge>
+        </ion-card-header>
+
+        <ion-skeleton-text animated style="width: calc(100% - 40px); margin: 16px auto 16px auto; min-height: 140px;">
+        </ion-skeleton-text>
+      </ng-container>
+
+      <!-- Chart -->
+      <ng-container *ngIf="content_loaded">
+        <ion-card-header>
+          <div>
+            <p><b style="color:black">My Portfolio</b></p>
+            <ion-card-title>{{total|currency}}</ion-card-title>
+            <!--   <ion-card-subtitle>Posição Investimentos no ano</ion-card-subtitle>-->
+          </div>
+          <ion-badge color="primary" mode="ios">
+            <ion-icon name="caret-up"></ion-icon>0.0%
+          </ion-badge>
+        </ion-card-header>
+
+        <canvas #pieChart>
+        </canvas>
+      </ng-container>
+    </ion-card>
+
+    <ion-list>
+      <ion-item *ngFor="let i of indicadores"
+        [hidden]="!i.NOME || i.NOME==='' || i.TIPO==='99' || i.TIPO==='90' || i.IDINDICADOR==='HTML1352' || i.IDINDICADOR==='HTML1351' "
+        lines="none">
+  
+        <div style="background:#000000"
+          [innerHtml]="i.NOME?.replaceAll('/nau/Content/','https://acesso.naufinance.com/nau/Content/').split('|.|')[0]?.replaceAll('|','')">
+        </div>
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-content>

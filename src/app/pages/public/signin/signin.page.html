@@ -1,0 +1,58 @@
+<ion-header>
+  <ion-toolbar class="ion-no-border">
+    <ion-buttons slot="end">
+      <ion-button color="primary" routerLink="/signup">
+        Register
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div class="ion-padding ion-full-height ion-flex ion-flex-center">
+
+    <div class="logo-container">
+     <!-- <h1 class="logo-placeholder">NAU Finance</h1>
+      <p>Gestão de Investimentos</p>-->
+    <!--  <img style="width: 100px;" src="https://acesso.naufinance.com/nau/Content/Images/NAuicon.png">-->
+      <img style="width: 250px;" src="https://acesso.naufinance.com/nau/Content/Images/logo-small@1x_lifra.png">
+
+    <!--  <ion-avatar>
+        <ion-img src="https://acesso.naufinance.com/nau/Content/Images/NAuicon.png"></ion-img>
+      </ion-avatar>-->
+    </div>
+
+    <form class="form-default" [formGroup]="signin_form" (submit)="signIn()">
+
+      <ion-list class="item-card-list" lines="none">
+        <ion-item>
+          <ion-label color="tertiary" position="stacked">Mail</ion-label>
+          <ion-input formControlName="email" type="email" autocomplete="off"
+            placeholder="Your email address"></ion-input>
+        </ion-item>
+
+        <ion-item class="ion-margin-top-small">
+          <ion-label color="tertiary" position="stacked">Password</ion-label>
+          <ion-input formControlName="password" type="password" placeholder="Your password"></ion-input>
+        </ion-item>
+      </ion-list>
+
+      <ion-button class="ion-margin-top" type="submit" expand="block" color="primary">
+        Login
+      </ion-button>
+
+      <ion-button color="primary" fill="clear" expand="block" class="ion-button-small ion-margin-top-medium" routerLink="/password-reset">
+        Forget password?
+      </ion-button>
+    </form>
+
+    <div class="ion-text-center ion-margin-top">
+      <ion-text color="medium">
+        <small>&copy; {{current_year}} A2M Creative LLC.</small>
+      </ion-text>
+    </div>
+
+  </div>
+
+</ion-content>

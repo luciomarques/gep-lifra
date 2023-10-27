@@ -1,0 +1,78 @@
+<ion-header>
+  <ion-toolbar class="ion-no-border">
+    <ion-buttons slot="start">
+      <ion-back-button text="Entrar" defaultHref="/signin"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div class="ion-padding ion-full-height ion-flex ion-flex-center">
+
+    <div>
+         
+		  
+ <!--     <video controls="controls" width="100%" height="200px" id="videoNau"><source src="https://www.gepbusiness.com/nau/content/videos/videologin.mp4"></video>	-->	  
+            </div>
+    <div class="logo-container">
+
+     
+
+      <!-- <h1 class="logo-placeholder">NAU Finance</h1>
+       <p>Gestão de Investimentos</p>-->
+     <!--  <img style="width: 100px;" src="https://acesso.naufinance.com/nau/Content/Images/NAuicon.png">-->
+       <img style="width: 250px;" src="https://acesso.naufinance.com/nau/Content/Images/logo-small@1x_lifra.png">
+       <p>Criate your account</p>
+     <!--  <ion-avatar>
+         <ion-img src="https://acesso.naufinance.com/nau/Content/Images/NAuicon.png"></ion-img>
+       </ion-avatar>-->
+     </div> 
+   
+   
+   
+   <!-- <div class="logo-container">
+
+
+      <h1 class="logo-placeholder">NAU Finance</h1>
+      <p>Crie sua conta.</p>
+    </div>-->
+    
+
+
+    <form class="form-default" [formGroup]="signup_form" (submit)="signUp()">
+
+      <ion-list class="item-card-list" lines="none">
+
+        <ion-item>
+          <ion-label color="tertiary" position="stacked">Mail</ion-label>
+          <ion-input formControlName="email" type="email" autocomplete="off"
+            placeholder="Seu endereço de E-mail"></ion-input>
+        </ion-item>
+
+        <ion-item class="ion-margin-top-small">
+          <ion-label color="tertiary" position="stacked">Password</ion-label>
+          <ion-input formControlName="password" type="password" placeholder="sua senha"></ion-input>
+        </ion-item>
+
+        <ion-item class="ion-margin-top-small">
+          <ion-label color="tertiary" position="stacked">Password again</ion-label>
+          <ion-input formControlName="password_repeat" type="password" placeholder="repita a senha"></ion-input>
+        </ion-item>
+
+      </ion-list>
+
+      <ion-button class="ion-margin-top" type="submit" expand="block" color="primary">
+        Register
+      </ion-button>
+    </form>
+
+    <div class="ion-text-center ion-margin-top">
+      <ion-text color="medium">
+        <small>&copy; {{current_year}} A2M Creative LLC</small>
+      </ion-text>
+    </div>
+
+  </div>
+
+</ion-content>

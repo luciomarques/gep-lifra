@@ -1,0 +1,10 @@
+{
+  "name": "Banking One",
+  "integrations": {
+    "capacitor": {
+      "enabled": false
+    },
+    "cordova": {}
+  },
+  "type": "angular"
+}

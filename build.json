@@ -1,0 +1,11 @@
+{
+  "android": {
+    "release": {
+      "keystore": "nau.keystore",
+      "storePassword": "nau2022",
+      "alias": "nau",
+      "password": "nau2022",
+      "keystoreType": ""
+    }
+  }
+}

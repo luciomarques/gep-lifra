@@ -1,0 +1,38 @@
+<ion-header collapse="fade" [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="voltar" defaultHref="/settings">
+      </ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      Integrações
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <div class="ion-padding">
+
+    <ion-list-header class="ion-list-header-small">
+      <ion-label>Integrações Disponíveis</ion-label>
+    </ion-list-header>
+
+    <ion-list class="list-custom" lines="full">
+
+      <ion-item detail="false" *ngFor="let i of dados">
+        <!-- <ion-icon slot="start" color="medium" name="phone-portrait"></ion-icon> -->
+        <div [innerHtml]="i.IMAGEM1"></div>
+        <ion-label>
+          <h3 [innerHtml]="i.DESCRICAO_C"></h3>
+          <p class="font-size-smallest">Atualizado em {{i.DT_ATUALIZACAO_MOV}}</p>
+        </ion-label>
+        <ion-badge color="primary" mode="ios" slot="end" (click)="showSendToken(i.IDCONTA)" >{{i.DT_ATUALIZACAO_MOV!==dataAtual()?'Atualizar':'Atualizado'}}</ion-badge>
+      </ion-item>
+      
+    </ion-list>
+    <p class="list-description">Clique em atualizar para sincronizar o Extrato de seu Banco.</p>
+
+  </div>
+
+</ion-content>

@@ -1,0 +1,38 @@
+{
+  "prepare_queue": {
+    "installed": [],
+    "uninstalled": []
+  },
+  "config_munge": {
+    "files": {}
+  },
+  "installed_plugins": {
+    "cordova-plugin-statusbar": {
+      "PACKAGE_NAME": "com.lifra.App"
+    },
+    "cordova-plugin-device": {
+      "PACKAGE_NAME": "com.lifra.App"
+    },
+    "cordova-plugin-splashscreen": {
+      "PACKAGE_NAME": "com.lifra.App"
+    },
+    "cordova-plugin-ionic-webview": {
+      "PACKAGE_NAME": "com.lifra.App"
+    },
+    "cordova-plugin-ionic-keyboard": {
+      "PACKAGE_NAME": "com.lifra.App"
+    },
+    "cordova-plugin-advanced-http": {
+      "ANDROIDBLACKLISTSECURESOCKETPROTOCOLS": "SSLv3,TLSv1",
+      "PACKAGE_NAME": "com.lifra.App"
+    },
+    "cordova-plugin-camera": {
+      "PACKAGE_NAME": "com.lifra.App"
+    }
+  },
+  "dependent_plugins": {
+    "cordova-plugin-file": {
+      "PACKAGE_NAME": "com.lifra.App"
+    }
+  }
+}
